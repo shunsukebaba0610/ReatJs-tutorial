@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState, createContext } from "react";
+import Login from "../components/Login";
+import User from "../components/User";
+
+export const AppContext = createContext(null);
 
 const Context = () => {
-	return (
-		<div>
-			ContextTutorial
-		</div>
-	)
-}
+  const [username, setUsername] = useState("");
 
-export default Context
+  return (
+    <div>
+      ContextTutorial
+      <div>
+        <AppContext.Provider value={{ username, setUsername }}>
+          <Login />
+          <User />
+        </AppContext.Provider>
+      </div>
+    </div>
+  );
+};
+
+export default Context;
